@@ -27,8 +27,8 @@ fi
 # Clone CCF repository and install dependencies
 su - ec2-user
 cd /home/ec2-user
-# git clone https://github.com/mukminpitoyo/cloud-carbon-footprint.git
-git clone https://github.com/cloud-carbon-footprint/cloud-carbon-footprint.git
+git clone https://github.com/mukminpitoyo/cloud-carbon-footprint.git
+# git clone https://github.com/cloud-carbon-footprint/cloud-carbon-footprint.git
 cd cloud-carbon-footprint/
 yarn install
 

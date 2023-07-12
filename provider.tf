@@ -1,4 +1,4 @@
 provider "aws" {
-  profile = "mukminpitoyo"
+  profile = "default"
   region  = var.default_region
 }
