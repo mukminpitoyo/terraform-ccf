@@ -9,7 +9,7 @@ terraform {
   backend "s3" {
     bucket = "ccf-terraform-bucket"
     key    = "terraform.tfstate"
-    region = "us-east-1"
+    region = "ap-southeast-1"
   }
 
   required_version = ">= 0.14.9"

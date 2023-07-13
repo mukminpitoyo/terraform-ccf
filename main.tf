@@ -22,7 +22,7 @@ resource "aws_s3_bucket_server_side_encryption_configuration" "ccf_terraform_sta
 
 
 resource "aws_security_group" "ccf_instance_sg" {
-  name   = "terraform-ccf-instance-sg"
+  name   = "govtech-terraform-ccf-instance-sg"
   vpc_id = var.vpc_id
 
   ingress {

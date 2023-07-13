@@ -1,16 +1,16 @@
 variable "terraform_state_bucket" {
   type    = string
-  default = "ccf-terraform-bucket"
+  default = "ccfterraformbucket"
 }
 
 variable "default_region" {
   type    = string
-  default = "us-east-1"
+  default = "ap-southeast-1"
 }
 
 variable "vpc_id" {
   type    = string
-  default = "vpc-e9d1af94"
+  default = "vpc-0443f170176b8d5c9"
 }
 
 variable "ami_id" {
@@ -27,7 +27,7 @@ variable "instance_type" {
 
 variable "key_name" {
   type    = string
-  default = "ccf-terraform"
+  default = "govtech-ccf-terraform"
 }
 
 # variable "private_subnet_id" {
