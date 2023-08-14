@@ -61,10 +61,10 @@ resource "aws_security_group" "ccf_instance_sg" {
   }
 }
 
-resource "aws_iam_instance_profile" "ccf_instance_profile" {
-  name = "ccf-instance-profile"
-  role = aws_iam_role.ccf_api_role.name
-}
+# resource "aws_iam_instance_profile" "ccf_instance_profile" {
+#   name = "ccf-instance-profile"
+#   role = aws_iam_role.ccf_api_role.name
+# }
 
 module "ec2_instance" {
   source  = "terraform-aws-modules/ec2-instance/aws"
@@ -75,9 +75,9 @@ module "ec2_instance" {
   key_name               = var.key_name
   monitoring             = true
   vpc_security_group_ids = [aws_security_group.ccf_instance_sg.id]
-  # subnet_id              = var.private_subnet_id
+  subnet_id              = var.private_subnet_id
   user_data              = file("install.sh")
-  iam_instance_profile   = aws_iam_instance_profile.ccf_instance_profile.name
+  # iam_instance_profile   = aws_iam_instance_profile.ccf_instance_profile.name
 
   tags = local.tags
 }

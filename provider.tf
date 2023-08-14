@@ -1,4 +1,4 @@
 provider "aws" {
-  profile = "default"
+  profile = "mukmin-ccf"
   region  = var.default_region
 }

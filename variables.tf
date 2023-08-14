@@ -1,6 +1,6 @@
 variable "terraform_state_bucket" {
   type    = string
-  default = "ccfterraformbucket"
+  default = "ccf-terraform-s3"
 }
 
 variable "default_region" {
@@ -15,8 +15,10 @@ variable "vpc_id" {
 
 variable "ami_id" {
   type    = string
+  # changed to use GT_GCCS_StandardBuild_AML_2_on_2023-07-27_07.35.39	
+  default   = "ami-091bf934ebedd746d"
   # changed to use AWS-ECS optomized AMI, which has Docker pre-installed
-  default = "ami-05e7fa5a3b6085a75" 
+  # default = "ami-0d2ffabfbd38ccd28" 
   # default = "ami-006dcf34c09e50022" # Amazon Linux AMI 2. This changes based on your AWS region.
 }
 
@@ -27,13 +29,13 @@ variable "instance_type" {
 
 variable "key_name" {
   type    = string
-  default = "govtech-ccf-terraform"
+  default = "govtechccf"
 }
 
-# variable "private_subnet_id" {
-#   type    = string
-#   default = "subnet-0575521f27239a159"
-# }
+variable "private_subnet_id" {
+  type    = string
+  default = "subnet-07e40329d59a19a19"
+}
 
 # If you have a security group that allows inbound traffic to connections coming from within a VPN
 # variable "vpn_security_group_id" {

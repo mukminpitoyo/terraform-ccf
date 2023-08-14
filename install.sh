@@ -50,10 +50,10 @@ cp .env.template .env
 sed -i 's/your-target-account-role-name (e.g. ccf-app)/cloud-carbon-footprint/g' .env
 sed -i 's/your-athena-db-name/costandusagereportdatabase/g' .env
 sed -i 's/your-athena-db-table/costandusagereport/g' .env
-sed -i 's/your-athena-region/us-east-1/g' .env
-sed -i 's/your-athena-query-results-location/cloud-carbon-footprint-t-athenaqueryresultsbucket-12os0754y9pke/g' .env
-sed -i 's/your-billing-account-id/705952877335/g' .env
-sed -i 's/your-billing-account-name/mukminpitoyo/g' .env
+sed -i 's/your-athena-region/ap-southeast-1/g' .env
+sed -i 's/your-athena-query-results-location/cloud-carbon-footprint-athenaqueryresultsbucket-24mjc7ujxotx/g' .env
+sed -i 's/your-billing-account-id/643546341891/g' .env
+sed -i 's/your-billing-account-name/AWSReservedSSO_agency_admin_501f943b6065c615/mukmin_pitoyo_from.tp@tech.gov.sg/g' .env
 sed -i 's/=default/=IAM/g' .env
 # sed -i 's/your-cache-mode/MONGODB/g' .env
 # sed -i 's#your-mongodb-uri#mongodb+srv://ccfmongo:0000ccfmongo@ccf-mongo.baimiag.mongodb.net#g' .env
