@@ -26,10 +26,10 @@ jobs:
         replace-with: '-'
         flags: 'g'
 
-    - name: Generate Deployment Package
-      run: |
-        cd cloud-carbon-footprint
-        zip -r deploy.zip docker-compose.yml
+    # - name: Generate Deployment Package
+    #   run: |
+    #     cd cloud-carbon-footprint
+    #     zip -r deploy.zip docker-compose.yml
     
     # Deploy to existing AWS Elastic Beanstalk environment, called govtech-ccf-env
     - name: Deploy to AWS Elastic Beanstalk
@@ -41,4 +41,4 @@ jobs:
         environment_name: govtech-ccf-env
         version_label: "docker-app-${{ steps.format-time.outputs.replaced }}"
         region: ap-southeast-1
-        deployment_package: deploy.zip
+        deployment_package: cloud-carbon-footprint/docker-compose.yml
