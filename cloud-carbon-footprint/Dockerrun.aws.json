@@ -1,0 +1,108 @@
+{
+    "AWSEBDockerrunVersion": 2,
+    "containerDefinitions": [
+      {
+        "name": "client",
+        "image": "cloudcarbonfootprint/client:latest",
+        "essential": true,
+        "memory": 128,
+        "cpu": 64,
+        "portMappings": [
+          {
+            "hostPort": 80,
+            "containerPort": 80
+          }
+        ]
+      },
+      {
+        "name": "api",
+        "image": "docker.io/cloudcarbonfootprint/api:latest",
+        "essential": true,
+        "memory": 256,
+        "cpu": 128,
+        "portMappings": [
+          {
+            "hostPort": 4000,
+            "containerPort": 4000
+          }
+        ],
+        "environment": [
+          {
+            "name": "CACHE_MODE",
+            "value": "MONGODB"
+          },
+          {
+            "name": "AWS_USE_BILLING_DATA",
+            "value": "true"
+          },
+          {
+            "name": "AWS_TARGET_ACCOUNT_ROLE_NAME",
+            "value": "/run/secrets/AWS_TARGET_ACCOUNT_ROLE_NAME"
+          },
+          {
+            "name": "AWS_ATHENA_DB_NAME",
+            "value": "/run/secrets/AWS_ATHENA_DB_NAME"
+          },
+          {
+            "name": "AWS_ATHENA_DB_TABLE",
+            "value": "/run/secrets/AWS_ATHENA_DB_TABLE"
+          },
+          {
+            "name": "AWS_ATHENA_REGION",
+            "value": "/run/secrets/AWS_ATHENA_REGION"
+          },
+          {
+            "name": "AWS_ATHENA_QUERY_RESULT_LOCATION",
+            "value": "/run/secrets/AWS_ATHENA_QUERY_RESULT_LOCATION"
+          },
+          {
+            "name": "AWS_BILLING_ACCOUNT_ID",
+            "value": "/run/secrets/AWS_BILLING_ACCOUNT_ID"
+          },
+          {
+            "name": "AWS_BILLING_ACCOUNT_NAME",
+            "value": "/run/secrets/AWS_BILLING_ACCOUNT_NAME"
+          },
+          {
+            "name": "MONGODB_URI",
+            "value": "/run/secrets/MONGODB_URI"
+          }
+        ],
+        "secrets": [
+          {
+            "name": "AWS_TARGET_ACCOUNT_ROLE_NAME",
+            "valueFrom": "AWS_TARGET_ACCOUNT_ROLE_NAME"
+          },
+          {
+            "name": "AWS_ATHENA_DB_NAME",
+            "valueFrom": "AWS_ATHENA_DB_NAME"
+          },
+          {
+            "name": "AWS_ATHENA_DB_TABLE",
+            "valueFrom": "AWS_ATHENA_DB_TABLE"
+          },
+          {
+            "name": "AWS_ATHENA_REGION",
+            "valueFrom": "AWS_ATHENA_REGION"
+          },
+          {
+            "name": "AWS_ATHENA_QUERY_RESULT_LOCATION",
+            "valueFrom": "AWS_ATHENA_QUERY_RESULT_LOCATION"
+          },
+          {
+            "name": "AWS_BILLING_ACCOUNT_ID",
+            "valueFrom": "AWS_BILLING_ACCOUNT_ID"
+          },
+          {
+            "name": "AWS_BILLING_ACCOUNT_NAME",
+            "valueFrom": "AWS_BILLING_ACCOUNT_NAME"
+          },
+          {
+            "name": "MONGODB_URI",
+            "valueFrom": "MONGODB_URI"
+          }
+        ]
+      }
+    ]
+  }
+  

@@ -8,7 +8,7 @@ resource "aws_elastic_beanstalk_application" "ccf_terraform_app" {
 resource "aws_elastic_beanstalk_environment" "ccf_terraform_env" {
   name                = "govtech-ccf-env"
   application         = aws_elastic_beanstalk_application.ccf_terraform_app.name
-  solution_stack_name = "64bit Amazon Linux 2023 v4.1.0 running Docker"
+  solution_stack_name = "64bit Amazon Linux 2023 v4.1.1 running Docker"
 
   # Configuring Elastic Beanstalk env with necessary  settings
   setting {
