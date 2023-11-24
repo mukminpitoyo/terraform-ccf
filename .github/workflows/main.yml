@@ -29,7 +29,6 @@ jobs:
     - name: Generate Deployment Package
       run: |
         cd cloud-carbon-footprint
-        docker-compose config > docker-compose.yml
         zip -r deploy.zip docker-compose.yml
     
     # Deploy to existing AWS Elastic Beanstalk environment, called govtech-ccf-env
