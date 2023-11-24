@@ -1,0 +1,43 @@
+name: CI/CD Pipeline to deploy CCF Calculator Application to AWS Elastic Beanstalk
+# test
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  builddeploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Get Timestamp
+      uses: gerred/actions/current-time@master
+      id: current-time
+
+    - name: Run String Replace
+      uses: frabert/replace-string-action@master
+      id: format-time
+      with:
+        pattern: '[:\.]+'
+        string: "${{ steps.current-time.outputs.time }}"
+        replace-with: '-'
+        flags: 'g'
+
+    - name: Generate Deployment Package
+      run: |
+        zip -r deploy.zip Dockerrun.aws.json
+    
+    # Deploy to existing AWS Elastic Beanstalk environment, called govtech-ccf-env
+    - name: Deploy to AWS Elastic Beanstalk
+      uses: einaregilsson/beanstalk-deploy@v21
+      with:
+        aws_access_key: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        application_name: govtech-ccf-app
+        environment_name: govtech-ccf-env
+        version_label: "docker-app-${{ steps.format-time.outputs.replaced }}"
+        region: ap-southeast-1
+        deployment_package: deploy.zip
