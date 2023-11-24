@@ -5,8 +5,8 @@ services:
     image: cloudcarbonfootprint/client:latest
     ports:
       - '80:80'
-    volumes:
-      - /var/app/current/docker/nginx.conf:/etc/nginx/nginx.conf
+    # volumes:
+    #   - ./docker/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - api
   api:
