@@ -5,8 +5,8 @@ services:
     image: cloudcarbonfootprint/client:latest
     ports:
       - '80:80'
-    # volumes:
-    #   - ./docker/nginx.conf:/etc/nginx/nginx.conf
+    volumes:
+      - ./docker/nginx.conf:/etc/nginx/nginx.conf
     depends_on:
       - api
   api:
@@ -17,7 +17,7 @@ services:
       - $HOME/.aws/credentials:/root/.aws/credentials
     environment:
       # set the CACHE_MODE to MONGODB to use MongoDB
-      - CACHE_MODE=MONGODB
+      - CACHE_MODE=LOCAL
       - AWS_USE_BILLING_DATA=true
       - AWS_TARGET_ACCOUNT_ROLE_NAME=${AWS_TARGET_ACCOUNT_ROLE_NAME}
       - AWS_ATHENA_DB_NAME=${AWS_ATHENA_DB_NAME}
